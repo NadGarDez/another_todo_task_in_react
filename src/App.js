@@ -1,24 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React , {useState} from 'react';
+import { ContainerApp } from './components/ContainerApp';
+import { CreateTodoButton } from './components/CreateToDoButton';
+import { TodoCard } from './components/TodoCard';
+import { TodoCounter } from './components/TodoCounter';
+import { TodoItem } from './components/TodoItem';
+import { TodoList } from './components/TodoList';
+import { TodoSearch } from './components/TodoSearch';
+import { TodoTitle } from './components/TodoTitle';
+import "./index.css"
 
 function App() {
+
+  const [todoList] = useState([{
+    text: "holix"
+  }])
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <ContainerApp>
+      <TodoTitle />
+      <TodoCard>
+        <TodoCounter/>
+        <TodoSearch/>
+        <TodoList>
+          {
+            todoList.map(
+              (item, index) => (
+                <TodoItem key={index} text={item.text}/>
+              )
+            )
+          }
+        </TodoList>
+        <CreateTodoButton />
+      </TodoCard>
+   </ContainerApp>
   );
 }
 

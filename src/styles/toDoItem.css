@@ -1,0 +1,32 @@
+.item {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    font-size: 16px;
+    background-color: #00000090;
+    color: whitesmoke;
+    display: flex;
+    flex-direction: row;
+    border-radius: 8px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #FFFFFF90;
+}
+
+.textContainer {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    align-items: center;
+    margin-left: 16px;
+}
+
+.buttonContainer {
+    margin-right: 8px;
+    color: white;
+    padding: 8px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #FFFFFF90;
+    border-radius: 5px;
+    background-color: #3e5f82;
+}

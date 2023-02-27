@@ -1,0 +1,28 @@
+.button {
+    display: flex;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    font-size: 16px;
+    border-radius: 8px;
+    padding-right: 8px;
+    padding-left: 8px;
+    background-color: #ffffff80;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #3d6084;
+    width: 100px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: #3d6084;
+    font-family: 'Shantell Sans', cursive;
+}
+
+.createToDoContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
