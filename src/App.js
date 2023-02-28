@@ -1,4 +1,4 @@
-import React , {useState} from 'react';
+import React , {useMemo, useState} from 'react';
 import { ContainerApp } from './components/ContainerApp';
 import { CreateTodoButton } from './components/CreateToDoButton';
 import { TodoCard } from './components/TodoCard';
@@ -12,21 +12,44 @@ import "./index.css"
 function App() {
 
   const [todoList] = useState([{
-    text: "holix"
+    text: "holix" , completed: false
   }])
+
+  const [search, setSearch] = useState("")
+  const onChangeTextSearch = (event)=>setSearch(event.target.value)
+
+  const completedTodo = todoList.filter(
+    item => !!item.completed
+  ).length;
+
+  const filteredTodo = useMemo(
+    ()=>todoList.filter(
+      item => {
+        if(search.length < 1 ) return true;
+        return item.text.toLowerCase().includes(search.toLowerCase())
+      }
+    ),
+    [search,todoList]
+  )
 
 
   return (
    <ContainerApp>
       <TodoTitle />
       <TodoCard>
-        <TodoCounter/>
-        <TodoSearch/>
+        <TodoCounter
+          totalTodo={todoList.length}
+          completed={completedTodo}
+        />
+        <TodoSearch 
+          onChangeText={onChangeTextSearch}
+          text={search}
+        />
         <TodoList>
           {
-            todoList.map(
+            filteredTodo.map(
               (item, index) => (
-                <TodoItem key={index} text={item.text}/>
+                <TodoItem key={index + new Date().getTime()} text={item.text}/>
               )
             )
           }
