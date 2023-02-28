@@ -2,22 +2,30 @@ import React from "react";
 import "../styles/toDoItem.css"
 
 
-export const TodoItem = ({text})=> {
+export const TodoItem = ({item, onDelete , onToggleTodo})=> {
     return (
         <div className="item">
-            <div className="textContainer">
+            <div className="textContainer" >
                 <p className="family1">
-                    {text}
+                    {item.text}
                 </p>
             </div>
 
-            <button className="buttonContainer">
+            <button className="buttonContainer"
+                onClick={
+                    ()=> onToggleTodo(item.id)
+                }
+            >
                 <p className="family1">
-                    complete
+                    {item.completed ? "Uncomplete" : "Complete"}
                 </p>
             </button>
 
-            <button className="buttonContainer">
+            <button className="buttonContainer"
+                onClick={
+                    ()=>onDelete(item.id)
+                }
+            >
                 <p className="family1">
                     delete
                 </p>

@@ -11,8 +11,8 @@ import "./index.css"
 
 function App() {
 
-  const [todoList] = useState([{
-    text: "holix" , completed: false
+  const [todoList, setTodoList] = useState([{
+    text: "holix" , completed: false , id : new Date().getTime()
   }])
 
   const [search, setSearch] = useState("")
@@ -32,6 +32,28 @@ function App() {
     [search,todoList]
   )
 
+  const toggleTodo = (id)=> {
+    const todoCopy = [...todoList];
+    const index = todoList.findIndex(
+      item => item.id === id
+    )
+    const newObject = {
+      ...todoList[index],
+      completed: !todoList[index].completed
+    }
+    todoCopy.splice(index , 1, newObject)
+    setTodoList(todoCopy)
+  }
+
+  const deleteTodo = (id)=> {
+    const todoCopy = [...todoList];
+    const index = todoList.findIndex(
+      item => item.id === id
+    )
+    todoCopy.splice(index , 1)
+    setTodoList(todoCopy)
+  }
+
 
   return (
    <ContainerApp>
@@ -49,7 +71,7 @@ function App() {
           {
             filteredTodo.map(
               (item, index) => (
-                <TodoItem key={index + new Date().getTime()} text={item.text}/>
+                <TodoItem key={index + new Date().getTime()} item={item} onDelete={deleteTodo} onToggleTodo={toggleTodo}/>
               )
             )
           }
