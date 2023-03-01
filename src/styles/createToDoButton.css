@@ -18,6 +18,8 @@
     align-items: center;
     color: #3d6084;
     font-family: 'Shantell Sans', cursive;
+    cursor: pointer;
+
 }
 
 .createToDoContainer {

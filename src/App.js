@@ -9,11 +9,14 @@ import { TodoSearch } from './components/TodoSearch';
 import { TodoTitle } from './components/TodoTitle';
 import "./index.css"
 
+const LOCAL_STORAGE_ITEM_NAME = "TODOS_PLATZI";
+
 function App() {
 
-  const [todoList, setTodoList] = useState([{
-    text: "holix" , completed: false , id : new Date().getTime()
-  }])
+  const persistence = !localStorage.getItem(LOCAL_STORAGE_ITEM_NAME) ? [] : JSON.parse(localStorage.getItem(LOCAL_STORAGE_ITEM_NAME))
+
+  console.log(persistence)
+  const [todoList, setTodoList] = useState(persistence)
 
   const [search, setSearch] = useState("")
   const onChangeTextSearch = (event)=>setSearch(event.target.value)
@@ -42,6 +45,7 @@ function App() {
       completed: !todoList[index].completed
     }
     todoCopy.splice(index , 1, newObject)
+    saveOnLocalStorage(todoCopy)
     setTodoList(todoCopy)
   }
 
@@ -51,7 +55,12 @@ function App() {
       item => item.id === id
     )
     todoCopy.splice(index , 1)
+    saveOnLocalStorage(todoCopy)
     setTodoList(todoCopy)
+  }
+
+  const saveOnLocalStorage = (todos)=> {
+    localStorage.setItem(LOCAL_STORAGE_ITEM_NAME , JSON.stringify(todos))
   }
 
 
