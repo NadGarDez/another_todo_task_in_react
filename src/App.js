@@ -18,7 +18,9 @@ function App() {
     toggleTodo,
     deleteTodo,
     todoList,
-    completedTodo
+    completedTodo,
+    error,
+    loading
   }= useLocalStorage(LOCAL_STORAGE_ITEM_NAME)
 
   const [search, setSearch] = useState("")
@@ -46,7 +48,7 @@ function App() {
           onChangeText={onChangeTextSearch}
           text={search}
         />
-        <TodoList>
+        <TodoList error={error} loading={loading}>
           {
             filteredTodo.map(
               (item, index) => (

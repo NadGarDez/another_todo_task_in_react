@@ -5,3 +5,9 @@
     margin: 16px;
     overflow: scroll;
 }
+
+.feedbackContainer {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    color: white;
+}
