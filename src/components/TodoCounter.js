@@ -1,13 +1,20 @@
 import React from "react";
+import { RootContext } from "../context/RootContext";
 import "../styles/toDoCounter.css"
 
 
-export const TodoCounter = ({completed = 0, totalTodo = 0})=> {
+export const TodoCounter = ()=> {
     return (
-        <div className="container">
-            <h2 className="family2">
-                Haz completado {completed} de {totalTodo}
-            </h2>
-        </div>
+        <RootContext.Consumer>
+            {
+                ({completedTodo, todoList})=> (
+                    <div className="container">
+                        <h2 className="family2">
+                            Haz completado {completedTodo} de {todoList.length}
+                        </h2>
+                    </div>
+                )
+            }
+        </RootContext.Consumer>
     )
 }

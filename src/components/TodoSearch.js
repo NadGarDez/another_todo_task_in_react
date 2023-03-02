@@ -1,11 +1,18 @@
 import React, { useState } from "react";
+import { RootContext } from "../context/RootContext";
 import "../styles/toDoSearch.css"
 
-export const TodoSearch = ({onChangeText, text})=> {
+export const TodoSearch = ()=> {
 
     return (
-        <div className="inputContainer">
-            <input  className="input" placeholder="holix" onChange={onChangeText} value={text}/>
-        </div>
+        <RootContext.Consumer>
+            {
+                ({onChangeTextSearch, search})=>(
+                    <div className="inputContainer">
+                        <input  className="input" placeholder="holix" onChange={onChangeTextSearch} value={search}/>
+                    </div>
+                )
+            }
+        </RootContext.Consumer>
     )
 }
