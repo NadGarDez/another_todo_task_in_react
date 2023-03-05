@@ -10,26 +10,27 @@ export const TodoItem = ({item, onDelete , onToggleTodo})=> {
                     {item.text}
                 </p>
             </div>
+            <div className="buttonsContainer">
+                <button className="buttonContainer"
+                    onClick={
+                        ()=> onToggleTodo(item.id)
+                    }
+                >
+                    <p className="family1">
+                        {item.completed ? "Uncomplete" : "Complete"}
+                    </p>
+                </button>
 
-            <button className="buttonContainer"
-                onClick={
-                    ()=> onToggleTodo(item.id)
-                }
-            >
-                <p className="family1">
-                    {item.completed ? "Uncomplete" : "Complete"}
-                </p>
-            </button>
-
-            <button className="buttonContainer"
-                onClick={
-                    ()=>onDelete(item.id)
-                }
-            >
-                <p className="family1">
-                    delete
-                </p>
-            </button>
+                <button className="buttonContainer"
+                    onClick={
+                        ()=>onDelete(item.id)
+                    }
+                >
+                    <p className="family1">
+                        delete
+                    </p>
+                </button>
+            </div>
         </div>
     )
 }

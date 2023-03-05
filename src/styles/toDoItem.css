@@ -10,6 +10,7 @@
     border-style: solid;
     border-width: 2px;
     border-color: #FFFFFF90;
+    margin-bottom: 8px;
 }
 
 .textContainer {
@@ -20,8 +21,17 @@
     margin-left: 16px;
 }
 
+.buttonsContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    justify-content: flex-end;
+}
+
 .buttonContainer {
     margin-right: 8px;
+    margin-top: 2px;
     color: white;
     padding: 8px;
     border-style: solid;
@@ -30,4 +40,5 @@
     border-radius: 5px;
     background-color: #3e5f82;
     cursor: pointer;
+    max-height: 40px;
 }

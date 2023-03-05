@@ -10,7 +10,7 @@ export const TodoCounter = ()=> {
                 ({completedTodo, todoList})=> (
                     <div className="container">
                         <h2 className="family2">
-                            Haz completado {completedTodo} de {todoList.length}
+                            Completed {completedTodo} from {todoList.length}
                         </h2>
                     </div>
                 )

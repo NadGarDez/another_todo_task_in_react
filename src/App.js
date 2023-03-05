@@ -1,8 +1,9 @@
-import React , {useMemo, useState} from 'react';
+import React from 'react';
 import { ContainerApp } from './components/ContainerApp';
 import { CreateTodoButton } from './components/CreateToDoButton';
 import { TodoCard } from './components/TodoCard';
 import { TodoCounter } from './components/TodoCounter';
+import { TodoForm } from './components/TodoForm';
 import { TodoItem } from './components/TodoItem';
 import { TodoList } from './components/TodoList';
 import { TodoSearch } from './components/TodoSearch';
@@ -34,6 +35,7 @@ function App() {
             <CreateTodoButton />
           </TodoCard>
       </ContainerApp>
+      <TodoForm />
     </RootProvider>
   );
 }

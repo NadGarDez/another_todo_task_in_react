@@ -80,6 +80,24 @@ export const useLocalStorage = (keyName)=> {
         
     }
 
+    const addTodo = (item)=> {
+        setLoading(true)
+        setTimeout(
+            ()=> {
+                try {
+                    const todoCopy = [...todoList];
+                    todoCopy.push(item)
+                    saveOnLocalStorage(todoCopy)
+                    setTodoList(todoCopy)
+                } catch (error) {
+                    setError({message: error})
+                }
+                setLoading(false)
+            },
+            2000
+        )
+    }
+
     const saveOnLocalStorage = (todos)=> {
         localStorage.setItem(keyName , JSON.stringify(todos))
     }
@@ -88,6 +106,7 @@ export const useLocalStorage = (keyName)=> {
         completedTodo,
         toggleTodo,
         deleteTodo,
+        addTodo,
         todoList,
         loading,
         error
