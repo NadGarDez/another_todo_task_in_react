@@ -1,6 +1,7 @@
 import React from 'react';
 import { ContainerApp } from './components/ContainerApp';
 import { CreateTodoButton } from './components/CreateToDoButton';
+import { FilteredItems } from './components/FilteredItems';
 import { TodoCard } from './components/TodoCard';
 import { TodoCounter } from './components/TodoCounter';
 import { TodoForm } from './components/TodoForm';
@@ -22,20 +23,11 @@ function App() {
             <TodoCounter/>
             <TodoSearch />
             <TodoList>
-              <RootContext.Consumer>
-                {
-                  ({filteredTodo ,deleteTodo , toggleTodo})=> filteredTodo.map(
-                    (item, index) => (
-                      <TodoItem key={index + new Date().getTime()} item={item} onDelete={deleteTodo} onToggleTodo={toggleTodo}/>
-                    )
-                  )
-                }
-              </RootContext.Consumer>
+               <FilteredItems />
             </TodoList>
             <CreateTodoButton />
           </TodoCard>
       </ContainerApp>
-      <TodoForm />
     </RootProvider>
   );
 }

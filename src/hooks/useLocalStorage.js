@@ -9,11 +9,6 @@ export const useLocalStorage = (keyName)=> {
     const [todoList, setTodoList] = useState([])
     const [error, setError] = useState({})
 
-    const completedTodo = todoList.filter(
-        item => !!item.completed
-    ).length;
-
-
     useEffect(
         ()=> {
             setTimeout(
@@ -103,7 +98,6 @@ export const useLocalStorage = (keyName)=> {
     }
 
     return {
-        completedTodo,
         toggleTodo,
         deleteTodo,
         addTodo,

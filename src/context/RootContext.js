@@ -13,39 +13,23 @@ export const RootProvider = ({children})=> {
         deleteTodo,
         addTodo,
         todoList,
-        completedTodo,
         error,
         loading
     }= useLocalStorage(LOCAL_STORAGE_ITEM_NAME)
 
     const [search, setSearch] = useState("")
-    const [modalVisible, setVisible] = useState(false)
     const onChangeTextSearch = (event)=>setSearch(event.target.value)
-
-    const filteredTodo = useMemo(
-        ()=>todoList.filter(
-        item => {
-            if(search.length < 1 ) return true;
-            return item.text.toLowerCase().includes(search.toLowerCase())
-        }
-        ),
-        [search,todoList]
-    )
 
     return (
         <RootContext.Provider value={{
-            filteredTodo,
             onChangeTextSearch,
             search,
             setSearch,
             toggleTodo,
             deleteTodo,
             todoList,
-            completedTodo,
             error,
             loading,
-            modalVisible,
-            setVisible,
             addTodo
         }}>
             {children}

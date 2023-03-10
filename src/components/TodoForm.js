@@ -3,11 +3,11 @@ import { RootContext } from "../context/RootContext";
 import "../styles/todoForm.css";
 import { Modal } from "./Modal";
 
-export const TodoForm = ()=> {
+export const TodoForm = ({modalVisible, setVisible})=> {
 
     const [text, setText] = useState("")
 
-    const {addTodo, modalVisible, setVisible} = useContext(RootContext)
+    const {addTodo} = useContext(RootContext)
 
     const manageAddButton = ()=> {
         addTodo({
