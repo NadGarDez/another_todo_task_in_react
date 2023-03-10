@@ -1,9 +1,8 @@
-import React, { useContext, useState } from "react";
-import { RootContext } from "../context/RootContext";
+import React, { useState } from "react";
 import "../styles/createToDoButton.css"
 import { TodoForm } from "./TodoForm";
 
-export const CreateTodoButton = ()=> {
+export const CreateTodoButton = ({addTodo})=> {
 
     const [modalVisible, setVisible] = useState(false)
     const onClickAdd = ()=>setVisible(true)
@@ -13,7 +12,7 @@ export const CreateTodoButton = ()=> {
             <div className="createToDoContainer">
                 <button className="button" onClick={onClickAdd}>Add +</button>
             </div>
-            <TodoForm modalVisible={modalVisible} setVisible={setVisible}/>
+            <TodoForm modalVisible={modalVisible} setVisible={setVisible} addTodo={addTodo}/>
         </>
     )
 }

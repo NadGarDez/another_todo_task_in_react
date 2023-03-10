@@ -1,10 +1,7 @@
-import React, { useContext } from "react";
-import { RootContext } from "../context/RootContext";
+import React from "react";
 import "../styles/toDoList.css"
 
-export const TodoList = ({children})=> {
-
-    const {error, loading} = useContext(RootContext)
+export const TodoList = ({children, error, loading})=> {
 
     return (
         <div className="listContainer">

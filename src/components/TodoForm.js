@@ -1,13 +1,10 @@
-import React, { useContext, useState } from "react";
-import { RootContext } from "../context/RootContext";
+import React, { useState } from "react";
 import "../styles/todoForm.css";
 import { Modal } from "./Modal";
 
-export const TodoForm = ({modalVisible, setVisible})=> {
+export const TodoForm = ({modalVisible, setVisible,addTodo})=> {
 
     const [text, setText] = useState("")
-
-    const {addTodo} = useContext(RootContext)
 
     const manageAddButton = ()=> {
         addTodo({

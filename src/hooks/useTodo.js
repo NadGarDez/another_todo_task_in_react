@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 
 
-export const useLocalStorage = (keyName)=> {
+export const useTodo = (keyName)=> {
 
 
     const [loading, setLoading] = useState(true)
@@ -97,13 +97,20 @@ export const useLocalStorage = (keyName)=> {
         localStorage.setItem(keyName , JSON.stringify(todos))
     }
 
+
+    const [search, setSearch] = useState("")
+    const onChangeTextSearch = (event)=>setSearch(event.target.value)
+
     return {
         toggleTodo,
         deleteTodo,
         addTodo,
         todoList,
         loading,
-        error
+        error,
+        search,
+        setSearch,
+        onChangeTextSearch
     }
     
 }

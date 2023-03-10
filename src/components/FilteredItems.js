@@ -1,11 +1,8 @@
-import React, { useContext, useMemo } from "react";
-import { RootContext } from "../context/RootContext";
+import React, { useMemo } from "react";
 import { TodoItem } from "./TodoItem";
 
 
-export const FilteredItems = ()=> {
-
-    const {todoList ,deleteTodo , toggleTodo, search} = useContext(RootContext)
+export const FilteredItems = ({todoList ,deleteTodo , toggleTodo, search})=> {
 
     const filteredTodo = useMemo(
         ()=>todoList.filter(

@@ -1,12 +1,8 @@
-import React, { useContext } from "react";
-import { RootContext } from "../context/RootContext";
+import React from "react";
 import "../styles/toDoCounter.css"
 
 
-export const TodoCounter = ()=> {
-
-    const {todoList} = useContext(RootContext)
-
+export const TodoCounter = ({todoList})=> {
 
     const completedTodo = todoList.filter(
         item => !!item.completed

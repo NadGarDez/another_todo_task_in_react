@@ -4,31 +4,39 @@ import { CreateTodoButton } from './components/CreateToDoButton';
 import { FilteredItems } from './components/FilteredItems';
 import { TodoCard } from './components/TodoCard';
 import { TodoCounter } from './components/TodoCounter';
-import { TodoForm } from './components/TodoForm';
-import { TodoItem } from './components/TodoItem';
 import { TodoList } from './components/TodoList';
 import { TodoSearch } from './components/TodoSearch';
 import { TodoTitle } from './components/TodoTitle';
-import { RootContext, RootProvider } from './context/RootContext';
+import { useTodo } from './hooks/useTodo';
 import "./index.css"
 
+const LOCAL_STORAGE_ITEM_NAME = "TODOS_PLATZI";
 
 function App() {
 
+  const {
+    toggleTodo,
+    deleteTodo,
+    addTodo,
+    todoList,
+    loading,
+    error,
+    search,
+    onChangeTextSearch
+  } = useTodo(LOCAL_STORAGE_ITEM_NAME)
+
   return (
-    <RootProvider>
       <ContainerApp>
           <TodoTitle />
           <TodoCard>
-            <TodoCounter/>
-            <TodoSearch />
-            <TodoList>
-               <FilteredItems />
+            <TodoCounter todoList={todoList}/>
+            <TodoSearch onChangeTextSearch={onChangeTextSearch} search={search}/>
+            <TodoList loading={loading} error={error}>
+               <FilteredItems todoList={todoList} deleteTodo={deleteTodo} toggleTodo={toggleTodo} search={search}/>
             </TodoList>
-            <CreateTodoButton />
+            <CreateTodoButton addTodo={addTodo} />
           </TodoCard>
       </ContainerApp>
-    </RootProvider>
   );
 }
 
