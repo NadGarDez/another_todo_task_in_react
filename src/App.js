@@ -27,15 +27,21 @@ function App() {
 
   return (
       <ContainerApp>
-          <TodoTitle />
-          <TodoCard>
-            <TodoCounter todoList={todoList}/>
-            <TodoSearch onChangeTextSearch={onChangeTextSearch} search={search}/>
-            <TodoList loading={loading} error={error}>
-               <FilteredItems todoList={todoList} deleteTodo={deleteTodo} toggleTodo={toggleTodo} search={search}/>
-            </TodoList>
-            <CreateTodoButton addTodo={addTodo} />
-          </TodoCard>
+        {
+          ({mediaQuery})=>(
+            <>
+              <TodoTitle mediaQuery={mediaQuery}/>
+              <TodoCard mediaQuery={mediaQuery}>
+                <TodoCounter todoList={todoList}/>
+                <TodoSearch onChangeTextSearch={onChangeTextSearch} search={search}/>
+                <TodoList loading={loading} error={error}>
+                  <FilteredItems todoList={todoList} deleteTodo={deleteTodo} toggleTodo={toggleTodo} search={search}/>
+                </TodoList>
+                <CreateTodoButton addTodo={addTodo} />
+              </TodoCard>
+            </>
+          )
+        }
       </ContainerApp>
   );
 }
