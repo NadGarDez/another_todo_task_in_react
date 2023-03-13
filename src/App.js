@@ -7,6 +7,7 @@ import { TodoCounter } from './components/TodoCounter';
 import { TodoList } from './components/TodoList';
 import { TodoSearch } from './components/TodoSearch';
 import { TodoTitle } from './components/TodoTitle';
+import { WithTodo } from './hocs/withTodo';
 import { useTodo } from './hooks/useTodo';
 import "./index.css"
 
@@ -14,16 +15,13 @@ const LOCAL_STORAGE_ITEM_NAME = "TODOS_PLATZI";
 
 function App() {
 
-  const {
-    toggleTodo,
-    deleteTodo,
-    addTodo,
-    todoList,
-    loading,
-    error,
-    search,
-    onChangeTextSearch
-  } = useTodo(LOCAL_STORAGE_ITEM_NAME)
+  const todoProps = useTodo(LOCAL_STORAGE_ITEM_NAME)
+
+  const TodoCounterWithTodo = WithTodo(TodoCounter, todoProps)
+  const TodoSearchWithProps = WithTodo(TodoSearch, todoProps)
+  const TodoListWithProps = WithTodo(TodoList , todoProps)
+  const FilteredItemsWithProps = WithTodo(FilteredItems , todoProps)
+  const CreateTodoButtonWithProps = WithTodo(CreateTodoButton , todoProps)
 
   return (
       <ContainerApp>
@@ -32,12 +30,12 @@ function App() {
             <>
               <TodoTitle mediaQuery={mediaQuery}/>
               <TodoCard mediaQuery={mediaQuery}>
-                <TodoCounter todoList={todoList}/>
-                <TodoSearch onChangeTextSearch={onChangeTextSearch} search={search}/>
-                <TodoList loading={loading} error={error}>
-                  <FilteredItems todoList={todoList} deleteTodo={deleteTodo} toggleTodo={toggleTodo} search={search}/>
-                </TodoList>
-                <CreateTodoButton addTodo={addTodo} />
+                <TodoCounterWithTodo />
+                <TodoSearchWithProps />
+                <TodoListWithProps>
+                  <FilteredItemsWithProps/>
+                </TodoListWithProps>
+                <CreateTodoButtonWithProps/>
               </TodoCard>
             </>
           )

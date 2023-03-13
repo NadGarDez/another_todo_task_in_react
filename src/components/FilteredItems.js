@@ -2,7 +2,9 @@ import React, { useMemo } from "react";
 import { TodoItem } from "./TodoItem";
 
 
-export const FilteredItems = ({todoList ,deleteTodo , toggleTodo, search})=> {
+export const FilteredItems = (props)=> {
+
+    const {todoList ,deleteTodo , toggleTodo, search} = props
 
     const filteredTodo = useMemo(
         ()=>todoList.filter(

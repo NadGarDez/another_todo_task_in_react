@@ -2,7 +2,9 @@ import React from "react";
 import "../styles/toDoCounter.css"
 
 
-export const TodoCounter = ({todoList, mediaQuery})=> {
+export const TodoCounter = (props)=> {
+
+    const {todoList, mediaQuery} = props;
 
     const completedTodo = todoList.filter(
         item => !!item.completed
