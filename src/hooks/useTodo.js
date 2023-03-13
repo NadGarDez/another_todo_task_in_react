@@ -8,6 +8,7 @@ export const useTodo = (keyName)=> {
 
     const [todoList, setTodoList] = useState([])
     const [error, setError] = useState({})
+    const [hasChanged , setHasChanged] = useState(false)
 
     useEffect(
         ()=> {
@@ -20,12 +21,21 @@ export const useTodo = (keyName)=> {
                         setError({message: error.toString()})
                     }
                     setLoading(false)
+                    setHasChanged(false)
                 },
                 2000
             )
 
         },
-        [keyName, setLoading, setError]
+        [keyName, setLoading, setError, hasChanged]
+    )
+
+    window.addEventListener("storage", 
+        (change)=>{
+            if(change.key === keyName){
+                setHasChanged(true)
+            }
+        }
     )
 
     const toggleTodo = (id)=> {

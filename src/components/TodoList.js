@@ -3,6 +3,7 @@ import "../styles/toDoList.css"
 
 export const TodoList = ({children, error, loading})=> {
 
+    console.log(loading, "hey")
     return (
         <div className="listContainer">
                 {
@@ -23,7 +24,9 @@ export const TodoList = ({children, error, loading})=> {
                         </div>
                     ) : null
                 }
-            {children}
+                {
+                    children
+                }
         </div>
     )
 }
